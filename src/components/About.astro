@@ -1,0 +1,269 @@
+---
+// src/components/About.astro
+const values = [
+  { title: "Integrity", desc: "We hold ourselves to the highest ethical standards in every case we take." },
+  { title: "Excellence", desc: "Mediocrity is not in our vocabulary. We pursue the best possible outcome every time." },
+  { title: "Discretion", desc: "Your matters remain confidential. Trust is the foundation of every client relationship." },
+];
+---
+
+<section class="about" id="about">
+  <div class="container about__inner">
+
+    <!-- Left — visual block -->
+    <div class="about__visual">
+      <div class="about__card-main">
+        <p class="about__card-year">Est. 2004</p>
+        <p class="about__card-text">
+          Two decades of protecting individuals, families,
+          and businesses with unwavering dedication.
+        </p>
+        <div class="about__card-stats">
+          <div class="about__stat">
+            <span class="about__stat-num">12</span>
+            <span class="about__stat-label">Attorneys</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-num">4</span>
+            <span class="about__stat-label">Offices</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-num">20+</span>
+            <span class="about__stat-label">Years</span>
+          </div>
+        </div>
+      </div>
+      <div class="about__card-accent">
+        <span class="about__quote-mark">"</span>
+        <p>Justice is not given. It is fought for.</p>
+      </div>
+    </div>
+
+    <!-- Right — content -->
+    <div class="about__content">
+      <div class="about__label">
+        <span class="label__dash"></span>
+        <span>About The Firm</span>
+      </div>
+
+      <h2 class="about__title">
+        A firm built on<br />
+        <em>results, not promises</em>
+      </h2>
+
+      <p class="about__text">
+        Founded in 2004, Lex Legal Group has grown from a boutique practice
+        into a full-service law firm trusted by hundreds of clients across
+        the country. Our attorneys combine deep legal knowledge with a
+        relentless focus on results.
+      </p>
+
+      <p class="about__text">
+        We don't believe in one-size-fits-all solutions. Every client
+        receives a tailored legal strategy built around their specific
+        circumstances, goals, and timeline.
+      </p>
+
+      <div class="about__values">
+        {values.map((v) => (
+          <div class="value-item">
+            <div class="value-item__dot"></div>
+            <div>
+              <h4 class="value-item__title">{v.title}</h4>
+              <p class="value-item__desc">{v.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <a href="#contact" class="btn-primary" style="margin-top:2.5rem; display:inline-block;">
+        Meet Our Team
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 7rem 0;
+    background: var(--color-bg-alt);
+  }
+
+  .about__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  /* Visual */
+  .about__visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .about__card-main {
+    background: #1f1f1f;
+    border: 1px solid rgba(191,169,128,0.15);
+    padding: 2.5rem;
+    border-radius: 1px;
+  }
+
+  .about__card-year {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .about__card-text {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .about__card-stats {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .about__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .about__stat-num {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1;
+  }
+
+  .about__stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .about__card-accent {
+    background: var(--color-accent);
+    padding: 1.75rem 2rem;
+    border-radius: 1px;
+    position: relative;
+  }
+
+  .about__quote-mark {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 0.5;
+    color: rgba(0,0,0,0.15);
+    position: absolute;
+    top: 1.25rem;
+    left: 1.5rem;
+  }
+
+  .about__card-accent p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #111;
+    padding-left: 1rem;
+  }
+
+  /* Content */
+  .about__label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .label__dash {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .about__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: var(--color-text);
+    margin-bottom: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .about__title em {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  .about__text {
+    font-size: 0.92rem;
+    color: var(--color-muted);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Values */
+  .about__values {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .value-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .value-item__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .value-item__title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .value-item__desc {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .about__inner { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>
