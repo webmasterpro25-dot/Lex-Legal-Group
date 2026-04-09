@@ -1,0 +1,429 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="hero" id="home">
+
+  <!-- Background elements -->
+  <div class="hero__bg">
+    <div class="hero__line hero__line--v1"></div>
+    <div class="hero__line hero__line--v2"></div>
+    <div class="hero__noise"></div>
+  </div>
+
+  <div class="container hero__inner">
+
+    <!-- Left col — content -->
+    <div class="hero__content">
+
+      <div class="hero__eyebrow">
+        <span class="eyebrow__dash"></span>
+        <span class="eyebrow__text">Strategic Legal Counsel</span>
+      </div>
+
+      <h1 class="hero__title">
+        We don't just<br />
+        practice law.<br />
+        <em>We protect what<br />matters most.</em>
+      </h1>
+
+      <p class="hero__sub">
+        Lex Legal Group provides expert legal representation
+        for individuals and businesses navigating complex
+        legal challenges. Results-driven. Relentlessly focused.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="#services" class="hero__link">
+          Explore our services
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__num">20<em>+</em></span>
+          <span class="stat__label">Years of experience</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num">500<em>+</em></span>
+          <span class="stat__label">Cases resolved</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num">98<em>%</em></span>
+          <span class="stat__label">Client satisfaction</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right col — card visual -->
+    <div class="hero__visual" aria-hidden="true">
+      <div class="visual__card">
+        <div class="visual__tag">Lex Legal Group</div>
+        <blockquote class="visual__quote">
+          "The measure of a good attorney is not just knowing the law —
+          it's knowing how to use it for you."
+        </blockquote>
+        <div class="visual__author">
+          <div class="author__avatar">LLG</div>
+          <div>
+            <p class="author__name">James R. Caldwell</p>
+            <p class="author__role">Senior Partner</p>
+          </div>
+        </div>
+        <div class="visual__badges">
+          <span class="badge">Corporate Law</span>
+          <span class="badge">Litigation</span>
+          <span class="badge">Consulting</span>
+        </div>
+      </div>
+
+      <!-- Floating accent -->
+      <div class="visual__accent"></div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="scroll__line"></div>
+    <span class="scroll__text">Scroll</span>
+  </div>
+
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 5rem;
+    overflow: hidden;
+  }
+
+  /* Background decorative lines */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero__line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(191, 169, 128, 0.07);
+  }
+
+  .hero__line--v1 { left: 33%; }
+  .hero__line--v2 { left: 66%; }
+
+  .hero__noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  /* Layout */
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Eyebrow */
+  .hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow__dash {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .eyebrow__text {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Title */
+  .hero__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__title em {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  /* Subtitle */
+  .hero__sub {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Actions */
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+    transition: color 0.2s;
+  }
+
+  .hero__link:hover {
+    color: var(--color-text);
+  }
+
+  .hero__link svg {
+    transition: transform 0.2s;
+  }
+
+  .hero__link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Stats */
+  .hero__stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat__num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1;
+  }
+
+  .stat__num em {
+    font-style: normal;
+    color: var(--color-accent);
+    font-size: 1.25rem;
+  }
+
+  .stat__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    text-transform: uppercase;
+  }
+
+  .stat__divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* Visual card */
+  .hero__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .visual__card {
+    background: #1a1a1a;
+    border: 1px solid rgba(191, 169, 128, 0.15);
+    border-radius: 2px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .visual__tag {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .visual__quote {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    border: none;
+    padding: 0;
+  }
+
+  .visual__author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .author__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(191, 169, 128, 0.15);
+    border: 1px solid rgba(191, 169, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .author__name {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    font-weight: 400;
+  }
+
+  .author__role {
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .visual__badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.35rem 0.75rem;
+    border-radius: 1px;
+  }
+
+  /* Floating accent square */
+  .visual__accent {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(191, 169, 128, 0.08);
+    bottom: -2rem;
+    right: -2rem;
+    z-index: 0;
+    border-radius: 1px;
+  }
+
+  /* Scroll indicator */
+  .hero__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .scroll__line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  .scroll__text {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero__visual {
+      order: -1;
+    }
+
+    .visual__card {
+      max-width: 100%;
+    }
+
+    .hero__scroll { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .hero__stats {
+      gap: 1.25rem;
+    }
+
+    .stat__num {
+      font-size: 1.5rem;
+    }
+  }
+</style>

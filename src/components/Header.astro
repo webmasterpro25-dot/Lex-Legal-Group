@@ -1,0 +1,240 @@
+---
+// src/components/Header.astro
+---
+
+<header class="header" id="header">
+  <div class="container header__inner">
+
+    <!-- Logo -->
+    <a href="#" class="header__logo">
+      <span class="logo__text">Lex Legal</span>
+      <span class="logo__group">Group</span>
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="header__nav" aria-label="Main navigation">
+      <a href="#services" class="nav__link">Services</a>
+      <a href="#about" class="nav__link">About</a>
+      <a href="#testimonials" class="nav__link">Results</a>
+      <a href="#faq" class="nav__link">FAQ</a>
+      <a href="#contact" class="btn-primary nav__cta">Free Consultation</a>
+    </nav>
+
+    <!-- Hamburger mobile -->
+    <button class="header__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#services" class="mobile-menu__link">Services</a>
+    <a href="#about" class="mobile-menu__link">About</a>
+    <a href="#testimonials" class="mobile-menu__link">Results</a>
+    <a href="#faq" class="mobile-menu__link">FAQ</a>
+    <a href="#contact" class="mobile-menu__link mobile-menu__cta">Free Consultation</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.5rem 0;
+    transition: background 0.4s ease, padding 0.4s ease, border-bottom 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .header.scrolled {
+    background: rgba(17, 17, 17, 0.96);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(191, 169, 128, 0.15);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .header__logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 1px;
+  }
+
+  .logo__text {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+  }
+
+  .logo__group {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Nav */
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .nav__link {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav__link:hover {
+    color: var(--color-text);
+  }
+
+  .nav__link:hover::after {
+    width: 100%;
+  }
+
+  .nav__cta {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.7rem;
+  }
+
+  /* Burger */
+  .header__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .header__burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .header__burger.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .header__burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__burger.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background: rgba(17, 17, 17, 0.98);
+    padding: 1rem 0 2rem;
+    border-top: 1px solid rgba(191, 169, 128, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 400px;
+  }
+
+  .mobile-menu__link {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu__link:hover {
+    color: var(--color-text);
+  }
+
+  .mobile-menu__cta {
+    color: var(--color-accent);
+    border-bottom: none;
+    margin-top: 0.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header__nav { display: none; }
+    .header__burger { display: flex; }
+    .mobile-menu { display: flex; }
+  }
+</style>
+
+<script>
+  const header  = document.getElementById('header');
+  const burger  = document.getElementById('burger');
+  const menu    = document.getElementById('mobileMenu');
+  const links   = document.querySelectorAll('.mobile-menu__link');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Toggle mobile menu
+  burger?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('open');
+    burger.classList.toggle('active', isOpen);
+    burger.setAttribute('aria-expanded', String(isOpen));
+    menu?.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close on link click
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.remove('open');
+      burger?.classList.remove('active');
+      burger?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>

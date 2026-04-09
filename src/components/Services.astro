@@ -1,0 +1,237 @@
+---
+// src/components/Services.astro
+const services = [
+  {
+    number: "01",
+    title: "Corporate Law",
+    description:
+      "From business formation to complex mergers, we provide strategic legal guidance that protects your company at every stage of growth.",
+    items: ["Business Formation", "Mergers & Acquisitions", "Contract Drafting", "Compliance"],
+  },
+  {
+    number: "02",
+    title: "Civil Litigation",
+    description:
+      "We represent clients in high-stakes disputes with a results-driven approach built on thorough preparation and aggressive advocacy.",
+    items: ["Commercial Disputes", "Breach of Contract", "Tort Claims", "Appeals"],
+  },
+  {
+    number: "03",
+    title: "Family Law",
+    description:
+      "Sensitive matters handled with discretion and care. We protect your family's interests while minimizing conflict and stress.",
+    items: ["Divorce & Separation", "Child Custody", "Asset Division", "Prenuptial Agreements"],
+  },
+  {
+    number: "04",
+    title: "Criminal Defense",
+    description:
+      "Aggressive defense for individuals facing criminal charges. Your freedom and reputation are worth fighting for.",
+    items: ["Felony Defense", "Misdemeanors", "White Collar Crime", "Appeals"],
+  },
+  {
+    number: "05",
+    title: "Immigration Law",
+    description:
+      "Navigating immigration law requires precision. We guide individuals and businesses through every visa, petition, and application.",
+    items: ["Work Visas", "Green Cards", "Citizenship", "Deportation Defense"],
+  },
+  {
+    number: "06",
+    title: "Real Estate Law",
+    description:
+      "Protect your property investments with expert legal counsel covering transactions, disputes, and development projects.",
+    items: ["Property Transactions", "Title Issues", "Lease Agreements", "Zoning & Land Use"],
+  },
+];
+---
+
+<section class="services section-cream" id="services">
+  <div class="container">
+
+    <div class="services__header">
+      <div class="services__label">
+        <span class="label__dash"></span>
+        <span>Practice Areas</span>
+      </div>
+      <h2 class="services__title">
+        Legal expertise <em>across<br />every discipline</em>
+      </h2>
+      <p class="services__sub">
+        Our team of seasoned attorneys brings decades of combined experience
+        to deliver outcomes that matter.
+      </p>
+    </div>
+
+    <div class="services__grid">
+      {services.map((s) => (
+        <div class="service-card">
+          <div class="service-card__top">
+            <span class="service-card__num">{s.number}</span>
+            <div class="service-card__line"></div>
+          </div>
+          <h3 class="service-card__title">{s.title}</h3>
+          <p class="service-card__desc">{s.description}</p>
+          <ul class="service-card__items">
+            {s.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 7rem 0;
+  }
+
+  .services__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
+
+  .services__label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .label__dash {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-accent-dark);
+  }
+
+  .services__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: #111;
+    line-height: 1.15;
+  }
+
+  .services__title em {
+    font-style: italic;
+    color: var(--color-accent-dark);
+  }
+
+  .services__sub {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 380px;
+    align-self: end;
+  }
+
+  /* Grid */
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .service-card {
+    padding: 2.5rem;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .service-card:hover {
+    background: #fff;
+  }
+
+  .service-card:nth-child(3n) {
+    border-right: none;
+  }
+
+  .service-card__top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card__num {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-accent-dark);
+  }
+
+  .service-card__line {
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+  }
+
+  .service-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #111;
+    margin-bottom: 1rem;
+  }
+
+  .service-card__desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card__items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .service-card__items li {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: #888;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .service-card__items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 1px;
+    background: var(--color-accent-dark);
+  }
+
+  @media (max-width: 900px) {
+    .services__grid { grid-template-columns: repeat(2, 1fr); }
+    .service-card:nth-child(3n) { border-right: 1px solid rgba(0,0,0,0.08); }
+    .service-card:nth-child(2n) { border-right: none; }
+    .services__header { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .services__grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; }
+    .service-card:nth-child(2n) { border-right: none; }
+  }
+</style>

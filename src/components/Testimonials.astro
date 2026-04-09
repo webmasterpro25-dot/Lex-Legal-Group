@@ -1,0 +1,197 @@
+---
+// src/components/Testimonials.astro
+const testimonials = [
+  {
+    quote: "Lex Legal Group handled our corporate merger with exceptional precision. Their attention to detail and proactive communication made a complex process feel manageable.",
+    name: "Michael T.",
+    role: "CEO, Hartfield Industries",
+    initial: "M",
+  },
+  {
+    quote: "When I faced criminal charges that could have destroyed my career, they fought for me relentlessly. The charges were dismissed. I owe my livelihood to this firm.",
+    name: "Sarah K.",
+    role: "Medical Professional",
+    initial: "S",
+  },
+  {
+    quote: "Their immigration team secured my family's green cards after two previous attorneys had failed us. Professional, knowledgeable, and genuinely caring.",
+    name: "Carlos R.",
+    role: "Business Owner",
+    initial: "C",
+  },
+  {
+    quote: "The divorce process was the hardest time of my life. Lex Legal guided me through every step, protected my assets, and always put my children's best interests first.",
+    name: "Amanda L.",
+    role: "Private Client",
+    initial: "A",
+  },
+  {
+    quote: "We've retained Lex Legal for all our real estate transactions for the past 5 years. Their thoroughness has saved us from costly mistakes more than once.",
+    name: "Robert H.",
+    role: "Real Estate Developer",
+    initial: "R",
+  },
+  {
+    quote: "Outstanding litigation team. They won a case our previous counsel said was unwinnable. Exceptional preparation and courtroom presence throughout.",
+    name: "Patricia M.",
+    role: "VP of Operations",
+    initial: "P",
+  },
+];
+---
+
+<section class="testimonials section-cream" id="testimonials">
+  <div class="container">
+
+    <div class="testimonials__header">
+      <div class="testimonials__label">
+        <span class="label__dash-dark"></span>
+        <span>Client Results</span>
+      </div>
+      <h2 class="testimonials__title">
+        What our clients <em>say about us</em>
+      </h2>
+    </div>
+
+    <div class="testimonials__grid">
+      {testimonials.map((t) => (
+        <div class="t-card">
+          <div class="t-card__stars">
+            {"★★★★★"}
+          </div>
+          <p class="t-card__quote">"{t.quote}"</p>
+          <div class="t-card__author">
+            <div class="t-card__avatar">{t.initial}</div>
+            <div>
+              <p class="t-card__name">{t.name}</p>
+              <p class="t-card__role">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 7rem 0;
+  }
+
+  .testimonials__header {
+    margin-bottom: 3.5rem;
+  }
+
+  .testimonials__label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent-dark);
+    margin-bottom: 1rem;
+  }
+
+  .label__dash-dark {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-accent-dark);
+  }
+
+  .testimonials__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: #111;
+    line-height: 1.2;
+  }
+
+  .testimonials__title em {
+    font-style: italic;
+    color: var(--color-accent-dark);
+  }
+
+  /* Grid */
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .t-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    padding: 2rem;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .t-card:hover {
+    border-color: rgba(160,140,104,0.4);
+    transform: translateY(-3px);
+  }
+
+  .t-card__stars {
+    color: var(--color-accent-dark);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+  }
+
+  .t-card__quote {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.8;
+    flex: 1;
+  }
+
+  .t-card__author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .t-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(160,140,104,0.12);
+    border: 1px solid rgba(160,140,104,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-accent-dark);
+    flex-shrink: 0;
+  }
+
+  .t-card__name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #111;
+  }
+
+  .t-card__role {
+    font-size: 0.75rem;
+    color: #888;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 900px) {
+    .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .testimonials__grid { grid-template-columns: 1fr; }
+  }
+</style>

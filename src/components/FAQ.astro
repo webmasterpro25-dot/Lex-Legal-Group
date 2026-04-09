@@ -1,0 +1,221 @@
+---
+// src/components/FAQ.astro
+const faqs = [
+  {
+    q: "How much does an initial consultation cost?",
+    a: "We offer a free 30-minute initial consultation for all new clients. This allows us to evaluate your situation and determine the best legal strategy before any financial commitment.",
+  },
+  {
+    q: "How long will my case take?",
+    a: "Every case is unique. Simple matters may resolve in weeks, while complex litigation can take months or years. During your consultation, we'll provide a realistic timeline based on your specific circumstances.",
+  },
+  {
+    q: "What areas of law do you practice?",
+    a: "We handle Corporate Law, Civil Litigation, Family Law, Criminal Defense, Immigration Law, and Real Estate Law. Our team of specialists ensures expert handling of each practice area.",
+  },
+  {
+    q: "How do you charge for your services?",
+    a: "We offer several fee structures including hourly rates, flat fees for defined services, and contingency arrangements for certain cases. We discuss fees transparently during your initial consultation.",
+  },
+  {
+    q: "Can I communicate with my attorney directly?",
+    a: "Absolutely. Every client is assigned a lead attorney who is your primary point of contact. We believe direct communication builds stronger cases and better client relationships.",
+  },
+  {
+    q: "Do you represent clients outside your state?",
+    a: "Yes. While our primary offices are in New York, our attorneys are licensed in multiple states and we frequently handle federal matters nationwide.",
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container faq__inner">
+
+    <!-- Left -->
+    <div class="faq__left">
+      <div class="faq__label">
+        <span class="label__dash"></span>
+        <span>FAQ</span>
+      </div>
+      <h2 class="faq__title">
+        Common <em>questions<br />answered</em>
+      </h2>
+      <p class="faq__sub">
+        Can't find what you're looking for? Reach out directly
+        and we'll respond within 24 hours.
+      </p>
+      <a href="#contact" class="btn-primary" style="margin-top:2rem; display:inline-block;">
+        Ask a Question
+      </a>
+    </div>
+
+    <!-- Right — accordion -->
+    <div class="faq__list">
+      {faqs.map((f, i) => (
+        <div class="faq-item" data-index={i}>
+          <button class="faq-item__btn" aria-expanded="false">
+            <span class="faq-item__q">{f.q}</span>
+            <span class="faq-item__icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-item__body">
+            <p class="faq-item__a">{f.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: 7rem 0;
+    background: var(--color-bg);
+  }
+
+  .faq__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Left */
+  .faq__label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .label__dash {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .faq__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .faq__title em {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  .faq__sub {
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  /* Accordion */
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .faq-item__btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq-item__q {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .faq-item__icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item__btn[aria-expanded="true"] .faq-item__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-item__btn[aria-expanded="true"] .faq-item__q {
+    color: var(--color-accent);
+  }
+
+  .faq-item__body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+
+  .faq-item__body.open {
+    max-height: 200px;
+    padding-bottom: 1.5rem;
+  }
+
+  .faq-item__a {
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    line-height: 1.9;
+  }
+
+  @media (max-width: 900px) {
+    .faq__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
+
+<script>
+  const items = document.querySelectorAll('.faq-item');
+
+  items.forEach((item) => {
+    const btn  = item.querySelector('.faq-item__btn');
+    const body = item.querySelector('.faq-item__body');
+
+    btn?.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      items.forEach((other) => {
+        other.querySelector('.faq-item__btn')?.setAttribute('aria-expanded', 'false');
+        other.querySelector('.faq-item__body')?.classList.remove('open');
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        body?.classList.add('open');
+      }
+    });
+  });
+</script>
